@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LKM 1_Kelompok_Kelas</title>
+<style>
+:root{--p:#0e7490;--pd:#155e75;--a:#f59e0b;--bg:#f1f8fa;--t:#1e293b;--b:#b6d3dc;--soft:#e3f2f6}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--t);font:16px/1.55 "Segoe UI",system-ui,Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.wrap{max-width:700px;margin:0 auto;padding:12px}
+header.h{background:linear-gradient(135deg,var(--pd),var(--p));color:#fff;border-radius:16px;padding:18px;text-align:center}
+header.h h1{margin:0;font-size:1.35rem}header.h p{margin:4px 0 0;opacity:.95;font-size:.92rem}
+.prog{position:sticky;top:0;z-index:5;background:#fff;border:1.5px solid var(--b);border-radius:14px;margin:10px 0;padding:8px 12px 6px;box-shadow:0 3px 10px #0e74902a}
+.pt{display:flex;justify-content:space-between;gap:8px;font-weight:600;font-size:.9rem;flex-wrap:wrap}
+.lane{display:flex;align-items:flex-end;gap:6px;margin-top:2px}
+.trk{position:relative;flex:1;min-width:0;padding-top:36px}
+#cart{position:absolute;top:0;left:0;width:44px;height:36px;transition:left .45s ease}
+.gd{font-size:28px;line-height:1;flex:none;padding-bottom:0}
+.bar{height:12px;background:repeating-linear-gradient(90deg,#d6c4a1 0 10px,#c8b48c 10px 12px);border-radius:9px;overflow:hidden;margin:0}
+#fill{height:100%;width:0;background:linear-gradient(90deg,#38bdf8,var(--p),var(--a));transition:width .45s}
+.prog small{display:block;color:#475569;margin-top:4px;font-size:.78rem}
+section{background:#fff;border:1.5px solid var(--b);border-radius:16px;padding:14px;margin:12px 0}
+section h2{margin:-14px -14px 12px;padding:10px 14px;background:var(--soft);color:var(--pd);border-radius:14px 14px 0 0;font-size:1.02rem}
+h3{margin:14px 0 6px;font-size:1rem;color:var(--pd)}
+.case{background:#fff8e6;border-left:5px solid var(--a);padding:10px 12px;border-radius:8px;font-style:italic}
+.case p{margin:.5em 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px}
+.q{margin:10px 0;break-inside:avoid}
+label,.lb{display:block;font-weight:600;font-size:.93rem;margin-bottom:4px}
+.q .lb.i{font-style:italic;font-weight:500}
+.ans,input[type=date]{display:block;width:100%;min-height:2.6em;border:1.5px solid var(--b);border-radius:10px;padding:8px 10px;background:#fcfeff;font:inherit;color:inherit;height:auto;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;overflow:visible}
+.ans:focus,input:focus{outline:3px solid #f59e0b66;border-color:var(--a)}
+.ans:empty::before{content:attr(data-p);color:#94a3b8;pointer-events:none}
+.mrow{display:flex;gap:8px;align-items:flex-start;margin:8px 0}
+.mrow .ml{font-weight:600;white-space:nowrap;padding-top:8px}
+.mrow .ans{flex:1;min-width:0}
+.btn{border:0;border-radius:10px;padding:9px 14px;font:inherit;font-weight:600;cursor:pointer;background:var(--p);color:#fff}
+.btn.add{background:#16a34a;margin-top:6px}.btn.del{background:#dc2626}.btn.sm{padding:6px 10px;font-size:.85rem}
+.btn.o{background:var(--a);color:#3b2a00}.btn.g{background:#64748b}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+th,td{border:1.5px solid var(--b);padding:6px;vertical-align:top;text-align:left}
+th{background:var(--soft);font-size:.88rem}
+th:nth-child(1),td:nth-child(1){width:12%;text-align:center}th:nth-child(5),td:nth-child(5){width:14%}
+.role{background:var(--soft);border-radius:10px;padding:8px 10px;margin:8px 0;break-inside:avoid}
+ul{padding-left:20px;margin:6px 0}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
+.modal.on{display:flex}.modal div{background:#fff;border-radius:16px;padding:18px;max-width:420px}
+@media screen and (max-width:640px){
+.grid{grid-template-columns:1fr}
+table,tbody,tr,td{display:block;width:100%!important}thead{display:none}
+tr{border:1.5px solid var(--b);border-radius:12px;margin:10px 0;padding:6px}
+td{border:0;text-align:left!important;padding:4px 6px}
+td::before{content:attr(data-l);display:block;font-weight:600;font-size:.85rem;color:var(--pd)}
+td.np:empty{display:none}}
+@page{size:A4;margin:12mm}
+@media print{
+body{background:#fff}
+.np,.prog,.acts,.modal{display:none!important}
+section,header.h{box-shadow:none}
+section{break-inside:auto}h2,h3{break-after:avoid}tr,.role,.case{break-inside:avoid}
+.ans:empty::before{content:""}
+.ans{border-color:#64748b}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="h">
+<h1>LEMBAR KERJA MURID (LKM)</h1>
+<p>Proyek IPAS – Kelas X SMK</p>
+<p>Topik: Energi dan Perubahannya │ Model: Problem Based Learning</p>
+</header>
+
+<div class="prog">
+<div class="pt"><span id="stg">Mulai mendorong</span><span><b id="pct">0%</b> · <span id="rat"></span></span></div>
+<div class="lane">
+<div class="trk">
+<svg id="cart" viewBox="0 0 44 36" aria-hidden="true">
+<ellipse cx="15" cy="10" rx="8" ry="5.5" fill="#fcd34d" stroke="#b45309" stroke-width="1"/>
+<ellipse cx="27" cy="9" rx="7" ry="5" fill="#fde68a" stroke="#b45309" stroke-width="1"/>
+<path d="M5 14H34L30 26H9Z" fill="#b45309"/>
+<path d="M34 15L43 7" stroke="#78350f" stroke-width="3" stroke-linecap="round"/>
+<circle cx="15" cy="29" r="6" fill="#334155"/><circle cx="15" cy="29" r="2.2" fill="#cbd5e1"/>
+<circle cx="29" cy="29" r="6" fill="#334155"/><circle cx="29" cy="29" r="2.2" fill="#cbd5e1"/>
+</svg>
+<div class="bar"><div id="fill"></div></div>
+</div>
+<span class="gd" title="Gudang penyimpanan">🏭</span>
+</div>
+<small>Dorong gerobak sampai gudang! Makin banyak bagian terisi, makin jauh perpindahannya (Usaha = Gaya × Jarak).</small>
+</div>
+
+<main>
+<section>
+<h2>IDENTITAS KELOMPOK</h2>
+<div class="grid">
+<div class="q"><label>Nama Ketua:</label><div class="ans one" contenteditable="true" data-k="n" data-p="Nama ketua"></div></div>
+<div class="q"><label>Kelas:</label><div class="ans one" contenteditable="true" data-k="c" data-p="cth: X-2"></div></div>
+<div class="q"><label>Tanggal:</label><input type="date" data-k="t"></div>
+<div class="q"><label>Kelompok:</label><div class="ans one" contenteditable="true" data-k="g" data-p="cth: 3"></div></div>
+</div>
+<div class="mem" id="mem"></div>
+<button class="btn add np" onclick="addMem()">+ Tambah Anggota</button>
+</section>
+
+<section>
+<h2>BAGIAN A – FASE 1: Orientasi pada Masalah</h2>
+<p>📖 <b>Baca studi kasus berikut dengan seksama!</b></p>
+<div class="case">
+<b style="font-style:normal">STUDI KASUS:</b>
+<p>Di kawasan Pelabuhan <b>Paotere</b>, Makassar, Daeng <b>Ralla</b> bekerja sebagai buruh angkut yang bertugas memindahkan puluhan karung hasil tangkapan ikan dari perahu ke gudang penyimpanan menggunakan gerobak dorong. Suatu pagi, Daeng Sangkala datang membawa gerobak baru yang rodanya lebih besar dan diberi pelumas, sedangkan gerobak milik Daeng <b>Ralla</b> sudah lama dan rodanya sedikit berkarat.</p>
+<p>Daeng <b>Naba</b>, yang bertugas mencatat hasil kerja para buruh, memperhatikan bahwa Daeng <b>Ralla</b> harus mendorong gerobaknya dengan tenaga yang jauh lebih besar dibandingkan Daeng Sangkala untuk memindahkan jumlah karung yang sama sejauh jarak yang sama pula. Sementara itu, Daeng Caca yang baru pertama kali bekerja di pelabuhan mencoba mendorong sekuat tenaga sebuah gerobak yang penuh muatan, namun gerobak itu sama sekali tidak bergeser karena roda-rodanya terjepit di sela-sela papan kayu di lantai dermaga.</p>
+<p>Melihat kejadian tersebut, Daeng <b>Naba</b> pun bertanya-tanya: mengapa usaha yang dikeluarkan Daeng <b>Ralla</b> dan Daeng Sangkala bisa berbeda untuk hasil yang sama? Dan mengapa Daeng Caca sudah mendorong sekuat tenaga, tetapi gerobaknya tidak berpindah sama sekali – apakah itu berarti ia tidak melakukan usaha, padahal ia sudah merasa sangat lelah?</p>
+</div>
+<h3>A.1 Pertanyaan Orientasi</h3>
+<div id="qa"></div>
+</section>
+
+<section>
+<h2>BAGIAN B – FASE 2: Mengorganisasikan Rencana Penyelidikan</h2>
+<h3>B.1 Pembagian Tugas Kelompok</h3>
+<p>Sebelum melakukan penyelidikan, lakukan pembagian tugas berikut agar setiap anggota kelompok memiliki peran yang jelas:</p>
+<div id="roles"></div>
+<p><b>Alat dan bahan yang disiapkan:</b> buku/benda yang dapat didorong, meja/lantai sebagai bidang dorong, penggaris atau meteran, serta alat tulis.</p>
+</section>
+
+<section>
+<h2>BAGIAN C – FASE 3: Membimbing Penyelidikan (Observasi Lapangan)</h2>
+<h3>C.1 Lakukan kegiatan berikut bersama kelompokmu:</h3>
+<ul>
+<li>Dorong sebuah benda (misalnya buku atau tas) di atas meja dengan tiga tingkat besar gaya yang berbeda: dorongan lemah, sedang, dan kuat.</li>
+<li>Ukur atau perkirakan jarak perpindahan benda pada setiap dorongan, lalu catat hasilnya pada tabel berikut.</li>
+</ul>
+<table id="tbl">
+<thead><tr><th>Percobaan</th><th>Besar Dorongan</th><th>Perkiraan Jarak Perpindahan</th><th>Keterangan/Pengamatan</th><th class="np"></th></tr></thead>
+<tbody id="tb"></tbody>
+</table>
+<button class="btn add np" onclick="addRow()">+ Tambah Baris / Subjek Identifikasi</button>
+<h3>C.2 Pertanyaan Analisis</h3>
+<div id="qc"></div>
+</section>
+
+<section>
+<h2>BAGIAN D – FASE 4: Menyajikan Hasil Karya</h2>
+<h3>D.1 Membuat Poster</h3>
+<p>Susunlah hasil diskusi kelompokmu dalam bentuk laporan sederhana atau poster yang memuat:</p>
+<div id="qd"></div>
+<p>Setiap kelompok akan mempresentasikan hasil kerja secara bergantian di depan kelas, disampaikan oleh Juru Bicara kelompok.</p>
+</section>
+
+<section>
+<h2>BAGIAN E – FASE 5: Evaluasi Proses Pemecahan Masalah</h2>
+<h3>E.1 Evaluasi Kelompok:</h3>
+<div id="qe"></div>
+</section>
+</main>
+
+<div class="acts">
+<button class="btn" onclick="dlTxt()">⬇ Unduh .txt</button>
+<button class="btn o" onclick="printIt()">🖨 Cetak / Simpan PDF</button>
+<button class="btn g" onclick="resetAll()">↺ Reset</button>
+</div>
+</div>
+
+<div class="modal" id="ios"><div>
+<h3 style="margin-top:0">Panduan iPhone / iPad</h3>
+<p>Jika jendela cetak tidak muncul: ketuk tombol <b>Bagikan</b> (kotak dengan panah) di Safari → pilih <b>Cetak</b> → cubit (zoom) pratinjau halaman untuk menyimpan sebagai <b>PDF</b>. Atau gunakan <b>Unduh .txt</b> sebagai cadangan.</p>
+<div class="acts"><button class="btn o" onclick="closeIos();doPrint()">Lanjut Cetak</button><button class="btn g" onclick="closeIos()">Tutup</button></div>
+</div></div>
+
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var KEY='lkm1_energi_perubahannya_v1',BASE='LKM 1_Kelompok_Kelas';
+var INIT=['Lemah','Sedang','Kuat','Terhalang (tidak berpindah)'];
+var QA=['Apa perbedaan kondisi gerobak yang digunakan Daeng Ralla dan Daeng Sangkala, dan bagaimana perbedaan tersebut memengaruhi besarnya usaha yang mereka keluarkan?','Mengapa gerobak yang didorong Daeng Caca tidak berpindah sama sekali meskipun ia sudah mengeluarkan tenaga secara maksimal?','Bagaimana hubungan antara besar gaya yang diberikan, jarak perpindahan benda, dan besar usaha yang dihasilkan?'];
+var QC=['Pada dorongan manakah benda berpindah paling jauh? Mengapa demikian?','Adakah percobaan yang menghasilkan dorongan tanpa perpindahan benda sama sekali? Apa artinya hal tersebut terhadap besar usaha yang dilakukan?','Berdasarkan hasil percobaan, bagaimana hubungan antara besar gaya, jarak perpindahan, dan besar usaha?'];
+var QD=['Rumusan masalah yang telah kalian tetapkan pada Fase 1.','Tabel data hasil percobaan pada Fase 3.','Kesimpulan mengenai konsep energi dan usaha berdasarkan hasil percobaan.','Kaitan antara hasil percobaan dengan studi kasus Daeng Ralla, Daeng Sangkala, dan Daeng Caca.'];
+var QE=['Setelah mendengarkan presentasi kelompok lain, apakah ada perbedaan pendapat atau temuan baru yang memperkaya pemahaman kelompokmu?','Tuliskan kesimpulan akhir kelompokmu mengenai hubungan antara energi dan usaha.','Apa kendala yang kelompokmu alami selama proses penyelidikan, dan bagaimana kelompokmu mengatasinya?'];
+var ROLES=[['Koordinator/Pencatat Data','bertugas memimpin jalannya kegiatan kelompok dan mencatat seluruh hasil pengamatan pada tabel data.'],['Analis Data/Pengukur','bertugas melakukan pengukuran (perkiraan besar gaya dan jarak perpindahan) serta membantu menganalisis hubungan antar data.'],['Juru Bicara/Presentasi','bertugas menyusun rangkuman hasil diskusi dan menyampaikannya pada saat presentasi kelompok.']];
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
+function fresh(){return{f:{},m:['',''],r:INIT.map(function(d){return{d:d,j:'',k:'',x:0}})}}
+var S=fresh();
+try{var L=JSON.parse(localStorage.getItem(KEY));if(L&&L.f&&L.m&&L.r)S=L}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function val(el){return el.tagName==='INPUT'?el.value:el.innerText.replace(/\u00a0/g,' ').replace(/\n$/,'')}
+function qs(id,pre,arr,italic){$(id).innerHTML=arr.map(function(q,i){return '<div class="q"><div class="lb'+(italic?' i':'')+'">'+(i+1)+'. '+esc(q)+'</div><div class="ans" contenteditable="true" data-k="'+pre+i+'" data-p="Tulis jawaban di sini…"></div></div>'}).join('')}
+function roles(){$('#roles').innerHTML=ROLES.map(function(r,i){return '<div class="role"><b>'+r[0]+'</b> '+r[1]+'<div class="ans one" style="margin-top:6px" contenteditable="true" data-k="b'+i+'" data-p="Nama anggota yang bertugas"></div></div>'}).join('')}
+function mems(){$('#mem').innerHTML=S.m.map(function(v,i){return '<div class="mrow"><span class="ml">Anggota '+(i+2)+':</span><div class="ans one" contenteditable="true" data-m="'+i+'" data-p="Nama anggota"></div><button class="btn del sm np" onclick="delMem('+i+')">Hapus</button></div>'}).join('');$$('[data-m]').forEach(function(e){e.textContent=S.m[e.dataset.m]})}
+function rows(){$('#tb').innerHTML=S.r.map(function(r,i){return '<tr><td data-l="Percobaan">'+(i+1)+'</td><td data-l="Besar Dorongan">'+(r.x?'<div class="ans" contenteditable="true" data-r="'+i+'.d" data-p="Besar dorongan"></div>':esc(r.d))+'</td><td data-l="Perkiraan Jarak Perpindahan"><div class="ans" contenteditable="true" data-r="'+i+'.j" data-p="cth: 15 cm"></div></td><td data-l="Keterangan/Pengamatan"><div class="ans" contenteditable="true" data-r="'+i+'.k" data-p="Pengamatan"></div></td><td class="np">'+(r.x?'<button class="btn del sm" onclick="delRow('+i+')">Hapus</button>':'')+'</td></tr>'}).join('');$$('[data-r]').forEach(function(e){var p=e.dataset.r.split('.');e.textContent=S.r[p[0]][p[1]]})}
+function fill(){$$('[data-k]').forEach(function(e){var v=S.f[e.dataset.k]||'';if(e.tagName==='INPUT')e.value=v;else e.textContent=v})}
+function build(){qs('#qa','a',QA,1);qs('#qc','c',QC,1);qs('#qd','d',QD,0);qs('#qe','e',QE,1);roles();mems();rows();fill();prog()}
+function prog(){
+var els=$$('[data-k],[data-m],[data-r]'),n=0;
+els.forEach(function(e){if(val(e).trim())n++});
+var t=els.length,p=t?Math.round(n*100/t):0;
+$('#fill').style.width=p+'%';$('#pct').textContent=p+'%';$('#rat').textContent=n+' dari '+t+' bagian terisi';
+$('#cart').style.left='calc((100% - 44px) * '+(p/100)+')';
+$('#stg').textContent=p>=100?'✅ Sampai di gudang! Usaha selesai':p>=70?'📦 Hampir sampai gudang':p>=30?'💪 Gerobak mulai melaju':'🚚 Mulai mendorong gerobak';
+}
+function clean(v){return String(v||'').replace(/[\/\\:*?"<>|\r\n]+/g,'-').trim()}
+function fname(){return 'LKM 1_'+(clean(S.f.g)||'Kelompok')+'_'+(clean(S.f.c)||'Kelas')}
+function sync(){document.title=fname()}
+document.addEventListener('input',function(e){
+var el=e.target.closest('[data-k],[data-m],[data-r]');if(!el)return;
+var v=val(el);
+if(el.dataset.k)S.f[el.dataset.k]=v;
+else if(el.dataset.m)S.m[el.dataset.m]=v;
+else{var p=el.dataset.r.split('.');S.r[p[0]][p[1]]=v}
+save();prog();sync();
+});
+document.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.classList&&e.target.classList.contains('one'))e.preventDefault()});
+document.addEventListener('paste',function(e){var a=e.target.closest&&e.target.closest('.ans');if(!a)return;e.preventDefault();var t=(e.clipboardData||window.clipboardData).getData('text/plain');if(a.classList.contains('one'))t=t.replace(/\s*\n\s*/g,' ');document.execCommand('insertText',false,t)});
+window.addMem=function(){S.m.push('');save();mems();prog();var l=$$('[data-m]');l[l.length-1].focus()};
+window.delMem=function(i){S.m.splice(i,1);save();mems();prog()};
+window.addRow=function(){S.r.push({d:'',j:'',k:'',x:1});save();rows();prog();var l=$$('[data-r$=".d"]');l[l.length-1].focus()};
+window.delRow=function(i){S.r.splice(i,1);save();rows();prog()};
+window.resetAll=function(){if(!confirm('Kosongkan seluruh isian, kembalikan tabel ke kondisi awal, dan hapus data tersimpan di browser? Tindakan ini tidak dapat dibatalkan.'))return;try{localStorage.removeItem(KEY)}catch(e){}S=fresh();build();sync();window.scrollTo(0,0)};
+function txt(){
+var o=['LEMBAR KERJA MURID (LKM)','Proyek IPAS – Kelas X SMK','Topik: Energi dan Perubahannya | Model: Problem Based Learning',''];
+$$('main section').forEach(function(s){
+o.push('=== '+s.querySelector('h2').innerText+' ===');
+Array.prototype.forEach.call(s.querySelectorAll('.q,.role,#mem,table'),function(x){
+if(x.id==='mem'){S.m.forEach(function(v,i){o.push('Anggota '+(i+2)+': '+v)})}
+else if(x.tagName==='TABLE'){S.r.forEach(function(r,i){o.push('Percobaan '+(i+1)+' | Besar Dorongan: '+r.d+' | Jarak Perpindahan: '+r.j+' | Keterangan: '+r.k)})}
+else if(x.classList.contains('role')){o.push(x.querySelector('b').innerText+': '+val(x.querySelector('.ans')))}
+else{var l=x.querySelector('label,.lb'),a=x.querySelector('[data-k]');o.push((l?l.innerText:'')+' '+(a.tagName==='INPUT'?a.value:'\n'+val(a)).replace(/^\n$/,''))}
+});o.push('')});
+return o.join('\n');
+}
+window.dlTxt=function(){
+var b=new Blob(['\ufeff'+txt()],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');
+a.href=URL.createObjectURL(b);a.download=fname()+'.txt';document.body.appendChild(a);a.click();
+setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);
+};
+var isIOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+window.closeIos=function(){$('#ios').classList.remove('on')};
+window.doPrint=function(){document.title=fname();requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(function(){window.print()},80)})})};
+window.printIt=function(){if(isIOS)$('#ios').classList.add('on');else doPrint()};
+window.addEventListener('beforeprint',function(){document.title=fname()});
+window.addEventListener('afterprint',sync);
+build();sync();
+})();
+</script>
+</body>
+</html>
